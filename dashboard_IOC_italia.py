@@ -366,7 +366,7 @@ div[data-testid="stMainBlockContainer"] div[data-testid="stSelectbox"] > div > d
 """, unsafe_allow_html=True)
 
 # ── DATA ─────────────────────────────────────────────────────────────────────
-DATA_PATH = "griglia_ioc_italia_2.geojson"
+DATA_PATH = "griglia_ioc_italia_2_light.csv"
 
 VARIABILI_MAPPA = {
     "IOC":                          "IOC complessivo",
