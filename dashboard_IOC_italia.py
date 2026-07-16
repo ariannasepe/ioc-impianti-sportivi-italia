@@ -441,13 +441,18 @@ METODOLOGIA_DIMENSIONI = [
 def carica_dati():
     try:
         gdf = gpd.read_file(DATA_PATH)
+
+        colonne_numeriche = [
+            "IOC", "population", "n_impianti", "n_scuole", "n_fermate",
+        ]
+        for col in colonne_numeriche:
+            if col in gdf.columns:
+                gdf[col] = pd.to_numeric(gdf[col], errors="coerce")
+
         return gdf
     except Exception as e:
         st.error(f"Errore nel caricamento dati: {e}")
         return None
-
-
-gdf = carica_dati()
 
 # ── SIDEBAR ───────────────────────────────────────────────────────────────────
 with st.sidebar:
