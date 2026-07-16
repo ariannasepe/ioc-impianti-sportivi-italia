@@ -46,6 +46,20 @@ def logo_tag(size_px: int, radius_px: int = 14, border_radius_full: bool = False
         f'"></div>'
     )
 
+colonne_numeriche = [
+    "IOC",
+    "n_impianti",
+    "n_stazioni",
+    "n_scuole"
+]
+
+for col in colonne_numeriche:
+    if col in gdf_filtered.columns:
+        gdf_filtered[col] = pd.to_numeric(
+            gdf_filtered[col],
+            errors="coerce"
+        )
+
 # ── TEMA CROMATICO  ───────────────────────
 CHART_BG    = "#f4faff"
 CHART_INNER = "#eaf4fc"
