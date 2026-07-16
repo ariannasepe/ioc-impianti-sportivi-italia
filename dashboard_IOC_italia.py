@@ -515,6 +515,7 @@ if gdf is not None:
     if comuni_sel:
         gdf_filtered = gdf_filtered[gdf_filtered["COMUNE"].isin(comuni_sel)]
     if soglia_ioc > 0:
+        gdf_filtered["IOC"] = pd.to_numeric(gdf_filtered["IOC"], errors="coerce")
         ioc_medi = gdf_filtered.groupby("COMUNE")["IOC"].mean()
         comuni_sopra_soglia = ioc_medi[ioc_medi >= soglia_ioc].index
         gdf_filtered = gdf_filtered[gdf_filtered["COMUNE"].isin(comuni_sopra_soglia)]
@@ -525,6 +526,7 @@ else:
 if gdf_filtered is not None:
     n_celle_tot = len(gdf_filtered)
     n_comuni    = gdf_filtered["COMUNE"].nunique()
+    gdf_filtered["IOC"] = pd.to_numeric(gdf_filtered["IOC"], errors="coerce")
     ioc_medio   = gdf_filtered["IOC"].mean()
     n_impianti  = int(gdf_filtered["n_impianti"].sum())
     n_scuole    = int(gdf_filtered["n_scuole"].sum())
