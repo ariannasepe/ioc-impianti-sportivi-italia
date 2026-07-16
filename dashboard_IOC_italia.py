@@ -49,8 +49,10 @@ def logo_tag(size_px: int, radius_px: int = 14, border_radius_full: bool = False
 colonne_numeriche = [
     "IOC",
     "n_impianti",
-    "n_stazioni",
-    "n_scuole"
+    "n_fermate",
+    "n_scuole",
+    "population",
+    "cell_id"
 ]
 
 for col in colonne_numeriche:
