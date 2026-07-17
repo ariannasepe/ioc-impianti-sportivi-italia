@@ -355,12 +355,19 @@ footer { visibility: hidden; }
 /* ── Dataframe ── */
 [data-testid="stDataFrame"] { background: #f4faff; border-radius: 12px; overflow: hidden; }
 
-/* ── Selectbox nel main ── */
-div[data-testid="stMainBlockContainer"] div[data-testid="stSelectbox"] > div > div {
+/* Selectbox nel main — sfondo e testo */
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
     background-color: #ffffff !important;
-    color: #111 !important;
     border: 1.5px solid #b3dff5 !important;
     border-radius: 8px !important;
+}
+
+div[data-testid="stSelectbox"] div[data-baseweb="select"] * {
+    color: #111 !important;
+}
+
+div[data-testid="stSelectbox"] div[data-baseweb="select"] input {
+    color: #111 !important;
 }
 </style>
 """, unsafe_allow_html=True)
