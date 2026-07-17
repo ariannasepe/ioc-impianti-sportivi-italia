@@ -46,7 +46,6 @@ def logo_tag(size_px: int, radius_px: int = 14, border_radius_full: bool = False
         f'"></div>'
     )
 
-
 # ── TEMA CROMATICO  ───────────────────────
 CHART_BG    = "#f4faff"
 CHART_INNER = "#eaf4fc"
@@ -441,7 +440,7 @@ METODOLOGIA_DIMENSIONI = [
 @st.cache_data
 def carica_dati():
     try:
-        gdf = gpd.read_file(DATA_PATH)
+        gdf = pd.read_csv(DATA_PATH, encoding="utf-8")
         return gdf
     except Exception as e:
         st.error(f"Errore nel caricamento dati: {e}")
@@ -516,34 +515,16 @@ if gdf is not None:
     if comuni_sel:
         gdf_filtered = gdf_filtered[gdf_filtered["COMUNE"].isin(comuni_sel)]
     if soglia_ioc > 0:
-        gdf_filtered["IOC"] = pd.to_numeric(gdf_filtered["IOC"], errors="coerce")
         ioc_medi = gdf_filtered.groupby("COMUNE")["IOC"].mean()
         comuni_sopra_soglia = ioc_medi[ioc_medi >= soglia_ioc].index
         gdf_filtered = gdf_filtered[gdf_filtered["COMUNE"].isin(comuni_sopra_soglia)]
 else:
     gdf_filtered = None
-    
-colonne_numeriche = [
-    "IOC",
-    "n_impianti",
-    "n_fermate",
-    "n_scuole",
-    "population",
-    "cell_id"
-]
-
-for col in colonne_numeriche:
-    if col in gdf_filtered.columns:
-        gdf_filtered[col] = pd.to_numeric(
-            gdf_filtered[col],
-            errors="coerce"
-        )
 
 # ── KPI OVERVIEW (sempre visibili sopra le sezioni tematiche) ────────────────
 if gdf_filtered is not None:
     n_celle_tot = len(gdf_filtered)
     n_comuni    = gdf_filtered["COMUNE"].nunique()
-    gdf_filtered["IOC"] = pd.to_numeric(gdf_filtered["IOC"], errors="coerce")
     ioc_medio   = gdf_filtered["IOC"].mean()
     n_impianti  = int(gdf_filtered["n_impianti"].sum())
     n_scuole    = int(gdf_filtered["n_scuole"].sum())
@@ -741,7 +722,7 @@ with tab_comuni:
         )
 
         # Se nessun filtro comune è stato applicato, mostriamo i primi 12 per media IOC
-        # Se nessun filtro comune è stato applicato, mostriamo i primi N per media IOC (default 12)
+        
         col_slider, col_ordine = st.columns([2, 1])
         with col_slider:
             n_comuni = st.slider("Numero di comuni", min_value=3, max_value=50, value=12, step=3)
