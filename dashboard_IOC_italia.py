@@ -383,7 +383,7 @@ METODOLOGIA_DIMENSIONI = [
     {
         "id": "D1_demografica",
         "titolo": "D1 — Densità demografica",
-        "peso": "25%",
+        "peso": "20%",
         "colore": DIM_COLORS["D1_demografica"],
         "descrizione": (
             "Misura la concentrazione di popolazione residente nella cella esagonale. "
@@ -395,7 +395,7 @@ METODOLOGIA_DIMENSIONI = [
     {
         "id": "D2_offerta_sportiva",
         "titolo": "D2 — Offerta sportiva esistente",
-        "peso": "20%",
+        "peso": "25%",
         "colore": DIM_COLORS["D2_offerta_sportiva"],
         "descrizione": (
             "Conta gli impianti sportivi già presenti nella cella. "
@@ -407,7 +407,7 @@ METODOLOGIA_DIMENSIONI = [
     {
         "id": "D3_scuole",
         "titolo": "D3 — Scuole e università",
-        "peso": "20%",
+        "peso": "25%",
         "colore": DIM_COLORS["D3_scuole"],
         "descrizione": (
             "Numero di istituti scolastici e universitari presenti nelle celle.  Valori più alti indicano una maggiore presenza di giovani potenziali utenti di impianti sportivi."
@@ -417,7 +417,7 @@ METODOLOGIA_DIMENSIONI = [
     {
         "id": "D4_trasporti",
         "titolo": "D4 — Accessibilità TPL",
-        "peso": "15%",
+        "peso": "25%",
         "colore": DIM_COLORS["D4_trasporti"],
         "descrizione": (
             "Densità di fermate di trasporto pubblico locale (bus, tram, treno). Maggiori fermate permettono di raggiungere l'impianto sportivo più facilmente."
@@ -427,7 +427,7 @@ METODOLOGIA_DIMENSIONI = [
     {
         "id": "D5_capacita_spesa",
         "titolo": "D5 — Capacità di spesa",
-        "peso": "20%",
+        "peso": "5%",
         "colore": DIM_COLORS["D5_capacita_spesa"],
         "descrizione": (
             "Reddito medio dichiarato per contribuente nel comune di appartenenza, come "
@@ -638,7 +638,7 @@ with tab_metodo:
                     unsafe_allow_html=True)
         st.markdown("""
         <div class="insight-box" style="font-family:'Plus Jakarta Sans',monospace;">
-            IOC = 0.25 · D1 + 0.20 · D2 + 0.20 · D3 + 0.15 · D4 + 0.20 · D5
+            IOC = 0.20 · D1 + 0.25 · D2 + 0.25 · D3 + 0.25 · D4 + 0.5 · D5
         </div>
         <div class="insight-box">
             Ogni dimensione D<sub>i</sub> è normalizzata min-max sull'intero territorio nazionale
