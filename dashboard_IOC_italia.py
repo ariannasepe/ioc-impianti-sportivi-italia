@@ -381,7 +381,7 @@ div[data-testid="stIframe"] iframe {
     margin: 0 auto;
     display: block;
 }
-div[data-baseweb="select"] [class*="singleValue"] {
+.st-emotion-cache-pgu27n {
     color: #25465D !important;
 }
 </style>
