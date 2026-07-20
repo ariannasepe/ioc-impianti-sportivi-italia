@@ -381,12 +381,9 @@ div[data-testid="stIframe"] iframe {
     margin: 0 auto;
     display: block;
 }
-/* ── Fix colore testo selectbox ── */
-div[data-baseweb="select"] > div {
+div[data-testid="stSelectbox"] div[data-baseweb="select"] div {
     color: #25465D !important;
-}
-div[data-baseweb="select"] span {
-    color: #25465D !important;
+    opacity: 1 !important;
 }
 </style>
 """, unsafe_allow_html=True)
